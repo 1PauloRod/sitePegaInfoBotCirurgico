@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/page.css' %}">
+    <title>Cirurgico</title>
+</head>
+<body>
+    {% if fundones %}
+    {{fundones.text}}
+    {% endif %}
+    <div class="card">
+        <form class="form-card" method="POST" action="{% url 'main' %}">
+            {% csrf_token %}
+            <textarea name="text" rows="7" cols="70" placeholder="Escreva o texto"></textarea>
+            <input class="form-subtext" name="subtext" type="subtext" placeholder="escreva o subtexto" required>
+            <input name="author" type="text" placeholder="Autor" required>
+            <input class="btn" type="submit" value="Enviar">
+        </form>
+    </div>
+</body>
+</html>
